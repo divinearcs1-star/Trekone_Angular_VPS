@@ -1,0 +1,173 @@
+<div *ngIf="loading">
+    Loading...
+</div>
+<div *ngIf="!loading">
+    <div class="premium-hero" *ngIf="trekImages.length">
+        <div class="hero-slide" [style.background-image]="'url(' + trekImages[currentImageIndex] + ')'">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <span class="elite-label">
+                        ✨ PREMIUM EXPEDITION
+                    </span>
+                    <h1>
+                        {{event.eventName}}
+                    </h1>
+                    <h3 *ngIf="event.subtitleVisible">
+                        {{event.eventTag}}
+                    </h3>
+                    <p>
+                        {{event.eventTagline}}
+                    </p>
+                    <div class="hero-badges">
+                        <span>
+                            ⛰ {{event.altitude}}
+                        </span>
+                        <span>
+                            🔥 {{event.difficulty}}
+                        </span>
+                        <span>
+                            ⏱ {{event.duration}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="stats-bar">
+        <div class="stat">
+            <h2>{{event.altitude}}</h2>
+            <span>Altitude</span>
+        </div>
+        <div class="stat">
+            <h2>{{event.duration}}</h2>
+            <span>Duration</span>
+        </div>
+        <div class="stat">
+            <h2>{{event.difficulty}}</h2>
+            <span>Difficulty</span>
+        </div>
+        <div class="stat">
+            <h2>{{event.category}}</h2>
+            <span>Category </span>
+        </div>
+    </section>
+    <div class="container premium-section">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="glass-card">
+                    <span class="section-tag">
+                        THE EXPERIENCE
+                    </span>
+                    <h2>
+                        About The Expedition
+                    </h2>
+                    <p>
+                        {{event.description}}
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <span class="section-tag">
+                        HIGHLIGHTS
+                    </span>
+                    <h2>
+                        Major Attractions
+                    </h2>
+                    <div class="highlight-grid">
+                        <div class="highlight-card" *ngFor="let item of event.majorAttraction">
+                            ⭐ {{item}}
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <span class="section-tag">
+                        JOURNEY PLAN
+                    </span>
+                    <h2>
+                        Expedition Timeline
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            🚍 Departure From {{event.departureFrom}}
+                        </div>
+                        <div class="timeline-step">
+                            ☕ Refreshment Break
+                        </div>
+                        <div class="timeline-step">
+                            🥾 Trek Begins
+                        </div>
+                        <div class="timeline-step">
+                            🌄 Summit Experience
+                        </div>
+                        <div class="timeline-step">
+                            🍛 Breakfast & Lunch
+                        </div>
+                        <div class="timeline-step">
+                            🏠 Return Journey
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="glass-card">
+                            <h3>Included</h3>
+                            <ul>
+                                <li *ngFor="let item of event.includes">
+                                    ✔ {{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="glass-card">
+                            <h3>Things To Carry</h3>
+                            <ul>
+                                <li *ngFor="let item of event.thingsToCarry">
+                                    🎒 {{item}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="booking-panel">
+                    <span class="limited-tag">
+                        LIMITED SLOTS
+                    </span>
+                    <div class="price">
+                        ₹ {{selectedBatch?.fees}}
+                    </div>
+                    <div class="per-person">
+                        Per Person
+                    </div>
+                    <hr>
+                    <!-- <div *ngFor="let bookdate of validDates">
+                        📅 {{bookdate | date:'dd MMM yyyy'}}
+                        <span> {{ bookdate === 'Not available' ? 'No Upcoming Dates' : ' (' + event.difficulty + ' )' }}
+                        </span>
+                </div> -->
+                    <select class="batch-select" *ngIf="sortedEvent?.batches?.length > 0" [(ngModel)]="selectedBatch">
+                        <option *ngFor="let batch of sortedEvent.batches; let i=index" [ngValue]="batch">
+                            📅 Batch {{ i + 1 }} - {{ batch.eventDate | date:'dd-MMM-yyyy' }}
+                        </option>
+                    </select>
+
+                    <p>📍 {{event.trekFrom}}</p>
+                    <p>🔥 {{event.difficulty}}</p>
+                    <p>👥 {{selectedBatch?.availableSeats}} Seats Left</p>
+                    <span *ngIf="selectedBatch?.availableSeats <= 0" style="color: red"> Batch Full </span>
+                    <button [disabled]="selectedBatch?.availableSeats <= 0 && sortedEvent?.batches?.length > 0"
+                        class="premium-book-btn" (click)="booknow()">
+                        Reserve Expedition
+                    </button>
+                    <div class="trust-box">
+                        ✔ Verified Trek Leader <br>
+                        ✔ Secure Booking <br>
+                        ✔ Instant Confirmation <br>
+                        ✔ WhatsApp Support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

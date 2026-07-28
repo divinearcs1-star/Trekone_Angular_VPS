@@ -1,0 +1,43 @@
+<div class="login-page">
+    <div class="login-overlay">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-circle">
+                    🏔️
+                </div>
+                <h2>TrekOne</h2>
+                <p>Adventure Starts Here</p>
+            </div>
+            <form class="form">
+                <div class="form-group">
+                    <label>Member Login ID</label>
+                    <input type="text" class="form-control" [(ngModel)]="loginUserData.email" name="email"
+                        placeholder="Enter your email" required>
+                </div>
+                <div class="form-group password-wrapper">
+                    <label>Password</label>
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control password-input"
+                        [(ngModel)]="loginUserData.password" name="password" placeholder="Enter your password" required>
+                    <span class="toggle-icon" (click)="togglePassword()">
+                        <img [src]="showPassword ? 'assets/icons/eye.svg' : 'assets/icons/eye.svg'"
+                            alt="toggle password" width="20" height="20" />
+                    </span>
+                </div>
+                <div class="alert alert-danger custom-alert" *ngIf="msg">
+                    {{ msg }}
+                </div>
+                <button type="button" (click)="loginUser()" class="btn login-btn">
+                    Login
+                </button>
+                <button type="button" (click)="register()" class="btn register-btn">
+                    Create Account
+                </button>
+                <div class="forgot-password-container">
+                    <a routerLink="/forgot-password" class="forgot-password-link">
+                        Forgot Password?
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

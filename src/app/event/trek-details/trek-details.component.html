@@ -1,0 +1,128 @@
+<div *ngIf="loading">
+    Loading...
+</div>
+<div *ngIf="!loading">
+    <div class="trek-hero" *ngIf="trekImages.length > 0">
+        <div class="hero-slide" [style.background-image]="'url(' + trekImages[currentImageIndex] + ')'">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="altitude-badge">
+                    ⛰️ {{ trek.altitude }}
+                </span>
+                <h1 class="trek-title">
+                    {{ trek.eventName }}
+                </h1>
+                <div class="containercls">
+                    <h3 *ngIf="event.subtitleVisible" style="color: white; margin-left: 475px;">
+                        {{trek.eventTag}}
+                    </h3>
+                </div>
+                <p *ngIf="event.subtitleVisible" style="font-size:x-large; transform: translateY(-50px);">
+                    {{trek.eventTagline}}
+                </p>
+            </div>
+        </div>
+        <div class="hero-dots">
+            <span *ngFor="let image of trekImages; let i=index" class="dot" [class.active]="i === currentImageIndex">
+            </span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-5">
+            <!-- LEFT -->
+            <div class="col-lg-8">
+                <div class="premium-card">
+                    <h3>About Trek</h3>
+                    <p>
+                        {{event.description}}
+                    </p>
+                </div>
+                <div class="premium-card">
+                    <h3>Major Attractions</h3>
+                    <ul *ngFor="let attraction of event.majorAttraction" class="attractionmatch">
+                        <li>{{attraction}}</li>
+                    </ul>
+                </div>
+                <div class="premium-card">
+                    <h3>Itinerary</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            🚌 Departure From {{event.departureFrom}}
+                        </div>
+                        <div class="timeline-item">
+                            ☕ Tea Break
+                        </div>
+                        <div class="timeline-item">
+                            ⛰ Trek Start
+                        </div>
+                        <div class="timeline-item">
+                            🌄 Summit & Sunrise
+                        </div>
+                        <div class="timeline-item">
+                            🍛 Breakfast & Lunch
+                        </div>
+                        <div class="timeline-item">
+                            🏠 Return Journey
+                        </div>
+                    </div>
+                </div>
+                <div class="premium-card">
+                    <h3>Included</h3>
+                    <ul *ngFor="let include of event.includes" class="includematch">
+                        <li>✔ {{include}}</li>
+                    </ul>
+                </div>
+                <div class="premium-card">
+                    <h3>Things To Carry</h3>
+                    <ul *ngFor="let things of event.thingsToCarry" class="thingsmatch">
+                        <li>{{things}}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- RIGHT -->
+            <div class="col-lg-4">
+                <div class="booking-card">
+                    <h4>Quick Info</h4>
+                    <hr>
+
+                    <div>
+                        <p>
+                            <select class="batch-select" *ngIf="sortedEvent?.batches?.length > 0"
+                                [(ngModel)]="selectedBatch">
+                                <option *ngFor="let batch of sortedEvent.batches; let i=index" [ngValue]="batch">
+                                    📅 Batch {{ i + 1 }} - {{ batch.eventDate | date:'dd-MMM-yyyy' }}
+                                </option>
+                            </select>
+                        <p>
+                            📍 {{event.trekFrom}}
+                        </p>
+                        <p>
+                            ⛰ {{event.difficulty}}
+                        </p>
+                        <p>
+                            👥 {{selectedBatch?.availableSeats}} Seats Left
+                        </p>
+                        <span *ngIf="selectedBatch?.availableSeats <= 0" style="color: red"> Batch Full </span>
+                        <div class="containerperson">
+                            <div class="price">
+                                ₹ {{selectedBatch?.fees}}
+                            </div>
+                            <strong class="persondata"> / Person </strong>
+                        </div>
+                        <button [disabled]="selectedBatch?.availableSeats <= 0 && sortedEvent?.batches?.length > 0"
+                            class="btn book-btn" (click)="booknow()">
+                            Book Now
+                        </button>
+                    </div>
+                    <div class="trust-box">
+                        ✔ Secure Booking
+                        <br>
+                        ✔ Instant Confirmation
+                        <br>
+                        ✔ WhatsApp Support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

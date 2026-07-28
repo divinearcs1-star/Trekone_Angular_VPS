@@ -1,0 +1,125 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { __values } from 'tslib';
+
+@Component({
+  selector: 'app-trek-registration',
+  templateUrl: './trek-registration.component.html',
+  styleUrl: './trek-registration.component.css'
+})
+export class TrekRegistrationComponent  implements OnInit {
+
+ submitted = false;
+  eventname = ""
+  eventdate = ""
+  batchid=""
+  _id = ""
+  fees = ""
+  pickuparray: string []=[]
+  bookingData: any = ""
+
+  numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20];
+  today: string = new Date().toISOString().split('T')[0];
+
+  // Inject FormBuilder service
+  constructor(private FB: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    console.log('Constructor Called');
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.eventname = params.get('name') || '';
+      this._id = params.get('id') || '';
+      this.fees = params.get('fees') || '';
+      this.eventdate = (params.get('eventDate') || '');
+      this.batchid = (params.get('batchId') || '');
+      this.pickuparray = (params.get('pickup') || '').split(',');
+      this.MForm.patchValue({
+      // trekdate: ''
+    });
+    this.MForm.patchValue({
+      pickupLocation: ''
+    });
+
+      this.updateAmount();
+    });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  MForm = this.FB.group
+    (
+      {
+        // Add Multiple validations
+        fname: ['', [Validators.required, Validators.pattern('^[a-zA-Z .-]+$')]],
+        phone: ['', [Validators.required, Validators.pattern('^[0-9-]+$'), Validators.minLength(10), Validators.maxLength(10)]],
+        email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\\.[a-zA-Z]{2,}$')]],
+        phone2: ['', [Validators.required, Validators.pattern('^[0-9-]+$'), Validators.minLength(10), Validators.maxLength(10)]],
+        address: ['', [Validators.required, Validators.minLength(5)]],
+        terms: [false, [Validators.required, Validators.requiredTrue]],
+        city: ['', [Validators.required, Validators.pattern('^[a-zA-Z- ]+$'), Validators.minLength(4)]],
+        pickupLocation: ['', [Validators.required]],
+        // trekdate: ['', [Validators.required]],
+        noofperson: ['1', [Validators.required, Validators.min(1), Validators.max(20)]],
+        amount: ['0', []]
+      }
+    );
+
+  firstname = ""
+  lastname = ""
+  email = ""
+  phone = ""
+  address = ""
+
+  setData() {
+    this.eventdate = new Date(this.eventdate).toISOString().split('T')[0];
+    this.bookingData = {
+      eventName: this.eventname,
+      eventFee: this.fees,
+      customerName: this.MForm.get('fname')?.value,
+      mobile: this.MForm.get('phone')?.value,
+      email: this.MForm.get('email')?.value,
+      noOfPersons: this.MForm.get('noofperson')?.value,
+      amount: this.MForm.get('amount')?.value,
+      eventDate: this.eventdate,
+      batchCode: this.batchid,
+
+      emergencyMobile: this.MForm.get('phone2')?.value,
+      address: this.MForm.get('address')?.value,
+      terms: this.MForm.get('terms')?.value,
+      city: this.MForm.get('city')?.value,
+      pickupLocation: this.MForm.get('pickupLocation')?.value,
+      trekId : this._id
+    }
+    this.router.navigate(['/user/review'], { state: { bookingData: this.bookingData } });
+  }
+
+  increasePerson() {
+    const control = this.MForm.get('noofperson');
+    let value = Number(control?.value);
+    if (value < 10) {
+      control?.setValue(String(value + 1));
+      this.updateAmount();
+    }
+  }
+  decreasePerson() {
+    const control = this.MForm.get('noofperson');
+    let value = Number(control?.value);
+    if (value > 1) {
+      control?.setValue(String(value - 1));
+      this.updateAmount();
+    }
+  }
+
+  updateAmount() {
+    const persons = Number(this.MForm.get('noofperson')?.value);
+    const fees = Number(this.fees);
+    this.MForm.patchValue({
+      amount: String(fees * persons)
+    });
+  }
+}
+
