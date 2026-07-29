@@ -29,3 +29,15 @@ jobs:
             pankajbelote/trekone-frontend:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /root/trekone
+            docker compose pull frontend
+            docker compose up -d frontend
+            docker image prune -f    
