@@ -56,7 +56,7 @@ export class TrekDetailsComponent implements OnInit {
     this.sliderInterval = setInterval(() => {
       this.currentImageIndex =
         (this.currentImageIndex + 1) % this.trekImages.length;
-    }, 5000);
+    }, 4000);
   }
 
   filterAndSortBatches(event: any) {
