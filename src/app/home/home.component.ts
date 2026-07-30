@@ -233,6 +233,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 }
+
 function getNearestEventIndex() {
   throw new Error('Function not implemented.');
 }
