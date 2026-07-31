@@ -1,0 +1,66 @@
+report
+bus
+trek
+forest
+waterfall
+fort
+summit
+camp
+meal
+sunrise
+sunset
+lake
+return
+
+departure.png
+✅ breakfast.png
+✅ forest.png
+✅ waterfall.png
+✅ fort.png
+✅ plateau.png
+✅ summit.png
+✅ cave.png
+✅ temple.png
+✅ river.png
+✅ viewpoint.png
+✅ lunch.png
+✅ return.png
+✅ arrival.png
+
+departure.png	Departure from Pune
+pickup.png	Pickup Points
+breakfast.png	Breakfast
+trek-start.png	Trek Begins
+forest.png	Jungle / Forest Trail
+waterfall.png	Waterfall
+summit.png	Summit / Peak
+fort.png	Fort Exploration
+plateau.png	Plateau
+viewpoint.png	Viewpoint / Valley View
+cave.png	Cave Exploration
+temple.png	Temple Visit
+river.png	River Crossing
+lunch.png	Lunch
+camp.png	Campsite / Camping
+sunrise.png	Sunrise
+sunset.png	Sunset
+return.png	Return Trek
+arrival.png     Reach Pune / Trip Ends
+
+Your File	Icon
+departure.svg	Flag
+breakfast.svg	Coffee
+forest.svg	Trees
+summit.svg	Mountain
+viewpoint.svg	Binoculars
+camp.svg	Tent
+return.svg	Arrow Left Right
+arrival.svg	House
+waterfall.svg	Waves
+fort.svg	Castle
+temple.svg	Church / Landmark
+pickup.svg	Map Pin
+trek-start.svg	Footprints
+trail.svg	Route
+backpack.svg	Backpack
+lunch.svg	Utensils

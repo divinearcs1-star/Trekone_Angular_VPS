@@ -46,6 +46,21 @@
         <input [(ngModel)]="attractionInput" placeholder="Major Attractions">
         <input [(ngModel)]="seasonInput" placeholder="Seasons">
 
+        <h2>Quick Itinerary</h2>
+        <div *ngFor="let item of trekData.quickItinerary; let i=index" class="batch-box">
+            <input type="number" [(ngModel)]="item.order" placeholder="Order">
+            <input [(ngModel)]="item.title" placeholder="Title">
+            <input [(ngModel)]="item.subtitle" placeholder="Subtitle">
+            <input [(ngModel)]="item.time" placeholder="Time">
+            <input [(ngModel)]="item.icon" placeholder="Icon Path">
+            <button (click)="removeQuickItinerary(i)">
+                Remove
+            </button>
+        </div>
+        <button (click)="addQuickItinerary()">
+            Add Quick Itinerary
+        </button>
+
         <h2>Itinerary</h2>
 
         <div *ngFor="let item of trekData.itinerary; let i=index" class="batch-box">

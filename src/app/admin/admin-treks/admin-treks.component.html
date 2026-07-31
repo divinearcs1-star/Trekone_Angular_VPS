@@ -1,6 +1,13 @@
 <div class="treks-page">
     <div class="top-bar">
-        <h1>Manage Treks</h1>
+        
+    <div class="page-header">
+    <button class="back-btn" routerLink="/admin/dashboard" title="Go to Dashboard">
+        ←
+    </button>
+    <h1 class="page-title">Manage Treks</h1>
+    </div>
+        
         <button routerLink="/admin/add-trek" class="add-btn">
             + Add Trek
         </button>
@@ -44,12 +51,14 @@
         <div class="seat-box">
             <h2>Manage Batch Seats</h2>
             <p>{{ selectedTrek.eventName }}</p>
+            <div class="batch-list">
             <div *ngFor="let batch of selectedTrek.batches" class="batch-box">
                 <h4>{{ batch.batchId }}</h4>
                 <label>Total Seats</label>
                 <input type="number" [(ngModel)]="batch.totalSeats">
                 <label>Available Seats</label>
                 <input type="number" [(ngModel)]="batch.availableSeats">
+            </div>
             </div>
             <div class="modal-actions">
                 <button (click)="saveSeats()">Save</button>

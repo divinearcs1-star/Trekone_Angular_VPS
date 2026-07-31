@@ -43,6 +43,15 @@ export class AddTrekComponent {
     thingsToCarry: [],
     pickupLocation: [],
     majorAttraction: [],
+    quickItinerary: [
+      {
+        order: 1,
+        icon: 'assets/icons/',
+        title: '',
+        subtitle: '',
+        time: ''
+      }
+    ],
     itinerary: [{
       day: 1,
       title: '',
@@ -118,7 +127,16 @@ export class AddTrekComponent {
               this.trekData.itinerary = res.itinerary.map((item: any) => ({
                 day: item.day,
                 title: item.title,
-                description: item.details || ''
+                description: item.description || ''
+              }));
+            }
+            if (res.quickItinerary?.length) {
+              this.trekData.quickItinerary = res.quickItinerary.map((item: any) => ({
+                order: item.order,
+                icon: item.icon,
+                title: item.title,
+                subtitle: item.subtitle,
+                time: item.time
               }));
             }
           },
@@ -173,9 +191,20 @@ export class AddTrekComponent {
       description: ''
     });
   }
-
+  addQuickItinerary() {
+    this.trekData.quickItinerary.push({
+      order: this.trekData.quickItinerary.length + 1,
+      icon: 'assets/icons/',
+      title: '',
+      subtitle: '',
+      time: ''
+    });
+  }
   removeItinerary(index: number) {
     this.trekData.itinerary.splice(index, 1);
+  }
+  removeQuickItinerary(index: number) {
+    this.trekData.quickItinerary.splice(index, 1);
   }
 
   saveTrek() {
@@ -187,6 +216,14 @@ export class AddTrekComponent {
     this.trekData.pickupLocation = this.pickupInput.split(',').map((x: string) => x.trim());
     this.trekData.majorAttraction = this.attractionInput.split(',').map((x: string) => x.trim());
     this.trekData.season = this.seasonInput.split(',').map((x: string) => x.trim());
+
+    this.trekData.quickItinerary = this.trekData.quickItinerary.map((item: any) => ({
+      order: item.order,
+      icon: item.icon,
+      title: item.title,
+      subtitle: item.subtitle,
+      time: item.time
+    }));
 
     this.trekData.itinerary = this.trekData.itinerary.map((item: any) => ({
       day: item.day,

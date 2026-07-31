@@ -43,26 +43,38 @@
                         <li>{{attraction}}</li>
                     </ul>
                 </div>
-                <div class="premium-card">
-                    <h3>Itinerary</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            🚌 Departure From {{event.departureFrom}}
+                <!-- Trek Highlights -->
+                <div class="premium-card" *ngIf="event.quickItinerary?.length">
+                    <h3>Trek Highlights</h3>
+                    <div class="quick-itinerary">
+                        <div class="quick-card" *ngFor="let item of event.quickItinerary">
+                            <img [src]="'assets/icons/' + item.icon" [alt]="item.title" class="quick-icon">
+                            <h5>{{item.title}}</h5>
+                            <p>{{item.subtitle}}</p>
+                            <span *ngIf="item.time">{{item.time}}</span>
                         </div>
-                        <div class="timeline-item">
-                            ☕ Tea Break
-                        </div>
-                        <div class="timeline-item">
-                            ⛰ Trek Start
-                        </div>
-                        <div class="timeline-item">
-                            🌄 Summit & Sunrise
-                        </div>
-                        <div class="timeline-item">
-                            🍛 Breakfast & Lunch
-                        </div>
-                        <div class="timeline-item">
-                            🏠 Return Journey
+                    </div>
+                </div>
+                <!-- Trek Route -->
+                <div class="premium-card" *ngIf="event.trekRoute">
+                    <h3> Trek Route</h3>
+                    <div class="trek-route-box">
+                        <img src="assets/icons/route1.svg" class="route-icon" alt="Route">
+                        <p>{{event.trekRoute}}</p>
+                    </div>
+                </div>
+                <!-- Detailed Itinerary -->
+                <div class="premium-card" *ngIf="event.itinerary?.length">
+                    <h3>Day-wise Itinerary</h3>
+                    <div class="detail-timeline">
+                        <div class="timeline-row" *ngFor="let day of event.itinerary">
+                            <div class="day-badge">
+                                Day {{day.day}}
+                            </div>
+                            <div class="timeline-content">
+                                <h4>{{day.title}}</h4>
+                                <p>{{day.description}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +96,6 @@
                 <div class="booking-card">
                     <h4>Quick Info</h4>
                     <hr>
-
                     <div>
                         <p>
                             <select class="batch-select" *ngIf="sortedEvent?.batches?.length > 0"

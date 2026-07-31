@@ -78,31 +78,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="glass-card">
+                <!-- QUICK JOURNEY -->
+                <div class="glass-card" *ngIf="event.quickItinerary?.length">
                     <span class="section-tag">
-                        JOURNEY PLAN
+                        JOURNEY OVERVIEW
                     </span>
                     <h2>
-                        Expedition Timeline
+                        Quick Journey
                     </h2>
-                    <div class="timeline">
-                        <div class="timeline-step">
-                            🚍 Departure From {{event.departureFrom}}
+                    <div class="premium-quick-grid">
+                        <div class="premium-quick-card" *ngFor="let item of event.quickItinerary">
+                            <div class="icon-wrapper">
+                                <img [src]="'assets/icons/' + item.icon" [alt]="item.title" class="premium-icon">
+                            </div>
+                            <h4>{{item.title}}</h4>
+                            <p>{{item.subtitle}}</p>
+                            <span>{{item.time}}</span>
                         </div>
-                        <div class="timeline-step">
-                            ☕ Refreshment Break
-                        </div>
-                        <div class="timeline-step">
-                            🥾 Trek Begins
-                        </div>
-                        <div class="timeline-step">
-                            🌄 Summit Experience
-                        </div>
-                        <div class="timeline-step">
-                            🍛 Breakfast & Lunch
-                        </div>
-                        <div class="timeline-step">
-                            🏠 Return Journey
+                    </div>
+                </div>
+                <div class="glass-card" *ngIf="event.trekRoute">
+                    <span class="section-tag">
+                        TREK ROUTE
+                    </span>
+
+                    <h2>
+                        Trek Route
+                    </h2>
+
+                    <div class="route-box">
+                        <img src="assets/icons/route2.svg" class="route-icon" alt="Route">
+                        {{event.trekRoute}}
+                    </div>
+                </div>
+                <!-- DAY WISE ITINERARY -->
+                <div class="glass-card" *ngIf="event.itinerary?.length">
+                    <span class="section-tag">
+                        DETAILED ITINERARY
+                    </span>
+                    <h2>
+                        Expedition Plan
+                    </h2>
+                    <div class="premium-timeline">
+                        <div class="premium-day-row" *ngFor="let day of event.itinerary">
+                            <div class="premium-day-circle">
+                                Day {{day.day}}
+                            </div>
+                            <div class="premium-day-card">
+                                <h3>{{day.title}}</h3>
+                                <p>{{day.description}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +176,6 @@
                             📅 Batch {{ i + 1 }} - {{ batch.eventDate | date:'dd-MMM-yyyy' }}
                         </option>
                     </select>
-
                     <p>📍 {{event.trekFrom}}</p>
                     <p>🔥 {{event.difficulty}}</p>
                     <p>👥 {{selectedBatch?.availableSeats}} Seats Left</p>

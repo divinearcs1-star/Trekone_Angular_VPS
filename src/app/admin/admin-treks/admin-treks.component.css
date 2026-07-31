@@ -98,6 +98,7 @@
   gap: 10px;
 }
 .batch-seat-card {
+  flex: 0 0 170px; 
   border: 1px solid #ddd;
   padding: 12px;
   margin-top: 10px;
@@ -111,4 +112,76 @@
 .batch-seat-card p {
   margin: 4px 0;
   font-size: 14px;
+}
+
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    margin:0;
+}
+
+.back-btn{
+    display:flex;
+    align-items:center;
+    gap:2px;
+    padding:5px 9px;
+    border:none;
+    border-radius:10px;
+    background:#198754;
+    color:#fff;
+    font-size:12px;
+    margin-left: -27px;
+    font-weight:400;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.back-btn:hover{
+    background:#157347;
+    transform:translateY(-2px);
+}
+
+.back-btn:active{
+    transform:scale(.97);
+}
+
+.batch-list{
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.seat-info{
+    display: flex;
+    gap: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 10px;
+    margin: 15px 0;
+
+    scrollbar-width: thin;          /* Firefox */
+    scrollbar-color: #198754 #eee;
+}
+
+/* Chrome, Edge */
+.seat-info::-webkit-scrollbar{
+    height: 8px;
+}
+
+.seat-info::-webkit-scrollbar-track{
+    background: #eee;
+    border-radius: 10px;
+}
+
+.seat-info::-webkit-scrollbar-thumb{
+    background: #198754;
+    border-radius: 10px;
 }

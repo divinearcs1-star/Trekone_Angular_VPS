@@ -1,7 +1,12 @@
 <div class="refund-page">
 
     <div class="top-bar">
-        <h1>Refund Requests</h1>
+        <div class="page-header">
+    <button class="back-btn" routerLink="/admin/dashboard" title="Go to Dashboard">
+        ←
+    </button>
+    <h1 class="page-title">Refund Requests</h1>
+    </div>
     </div>
 
     <div *ngIf="loading">

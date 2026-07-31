@@ -3,29 +3,32 @@
     background: #050b14;
     color: white;
 }
+
 .premium-hero {
     height: 100vh;
 }
+
 .hero-slide {
     height: 100%;
     background-size: cover;
     background-position: center;
 }
+
 .hero-overlay {
     height: 100%;
     background:
-        linear-gradient(
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.80)
-        );
+        linear-gradient(rgba(0, 0, 0, .45),
+            rgba(0, 0, 0, .80));
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .hero-content {
     text-align: center;
     max-width: 900px;
 }
+
 .elite-label {
     background: #fbbf24;
     color: black;
@@ -33,20 +36,24 @@
     border-radius: 50px;
     font-weight: 700;
 }
+
 .hero-content h1 {
     font-size: 5rem;
     font-weight: 800;
     margin-top: 25px;
 }
+
 .hero-content h3 {
     color: #fbbf24;
     margin-top: 15px;
 }
+
 .hero-content p {
     font-size: 1.3rem;
     margin-top: 15px;
     color: #e2e8f0;
 }
+
 .hero-badges {
     display: flex;
     justify-content: center;
@@ -54,70 +61,82 @@
     flex-wrap: wrap;
     margin-top: 35px;
 }
+
 .hero-badges span {
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
     backdrop-filter: blur(10px);
     padding: 12px 20px;
     border-radius: 12px;
 }
+
 .stats-bar {
     display: grid;
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
     background: #0f172a;
 }
+
 .stat {
     text-align: center;
     padding: 35px;
 }
+
 .stat h2 {
     color: #fbbf24;
     font-weight: 700;
 }
+
 .premium-section {
     padding-top: 80px;
     padding-bottom: 80px;
 }
+
 .glass-card {
     background:
-        rgba(255,255,255,.04);
+        rgba(255, 255, 255, .04);
     backdrop-filter: blur(10px);
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid rgba(255, 255, 255, .08);
     border-radius: 24px;
     padding: 35px;
     margin-bottom: 25px;
 }
+
 .section-tag {
     color: #fbbf24;
     letter-spacing: 2px;
     font-size: 12px;
 }
+
 .glass-card h2 {
     margin-top: 10px;
     margin-bottom: 25px;
 }
+
 .highlight-grid {
     display: grid;
     grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
+        repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
 }
+
 .highlight-card {
     background:
-        rgba(255,255,255,.05);
+        rgba(255, 255, 255, .05);
     padding: 18px;
     border-radius: 14px;
 }
+
 .timeline-step {
     background:
-        rgba(255,255,255,.05);
+        rgba(255, 255, 255, .05);
     padding: 18px;
     border-left:
         4px solid #fbbf24;
     margin-bottom: 15px;
     border-radius: 10px;
 }
+
 .booking-panel {
     position: sticky;
     top: 100px;
@@ -125,19 +144,23 @@
     border-radius: 24px;
     padding: 35px;
 }
+
 .limited-tag {
     color: #fbbf24;
     font-size: 13px;
     letter-spacing: 2px;
 }
+
 .price {
     font-size: 3rem;
     font-weight: 800;
     color: #fbbf24;
 }
+
 .per-person {
     color: #94a3b8;
 }
+
 .premium-book-btn {
     width: 100%;
     border: none;
@@ -146,27 +169,24 @@
     font-weight: 700;
     margin-top: 20px;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #f59e0b,
-            #fbbf24
-        );
+            #fbbf24);
     color: black;
 }
+
 .trust-box {
     margin-top: 25px;
     line-height: 2;
 }
 
-
-
 .batch-select {
     width: 100%;
     margin: 18px 0;
     padding: 14px 18px;
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255, 255, 255, .15);
     border-radius: 14px;
-    background: rgba(255,255,255,.06);
+    background: rgba(255, 255, 255, .06);
     backdrop-filter: blur(12px);
     color: white;
     font-size: 15px;
@@ -178,12 +198,12 @@
 
 .batch-select:hover {
     border-color: #fbbf24;
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 }
 
 .batch-select:focus {
     border-color: #fbbf24;
-    box-shadow: 0 0 0 3px rgba(251,191,36,.18);
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, .18);
 }
 
 .batch-select option {
@@ -195,25 +215,184 @@
 .batch-select::-ms-expand {
     display: none;
 }
+
 .booking-panel p {
     margin-bottom: 12px;
     color: #e2e8f0;
     font-size: 15px;
 }
 
+@media(max-width:991px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
 
-@media(max-width:991px){
-    .hero-content h1{
-        font-size:3rem;
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .stats-bar{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .booking-panel{
-        position:relative;
-        top:0;
-        margin-top:30px;
+
+    .booking-panel {
+        position: relative;
+        top: 0;
+        margin-top: 30px;
     }
 }
 
+/* =======================================
+   Premium Quick Journey
+======================================= */
+.premium-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
 
+.premium-quick-card {
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 22px;
+    text-align: center;
+    padding: 18px 12px;
+    transition: .35s;
+}
+
+.premium-quick-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, .08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .30);
+}
+
+.icon-wrapper {
+    width: 56px;
+    height: 56px;
+    margin: auto;
+    border-radius: 50%;
+    background: rgba(251, 191, 36, .12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.premium-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.premium-quick-card h4 {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 590;
+    font-size: 1rem;
+}
+
+.premium-quick-card p {
+    color: #cbd5e1;
+    font-size: .90rem;
+    min-height: 42px;
+    margin-bottom: 12px;
+}
+
+.premium-quick-card span {
+    color: #fbbf24;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+/* =======================================
+   Premium Day Timeline
+======================================= */
+.premium-timeline {
+    margin-top: 30px;
+}
+
+.premium-day-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 35px;
+}
+
+.premium-day-circle {
+    width: 68px;
+    min-width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: #111827;
+    font-weight: 700;
+    margin-right: 18px;
+    font-size: .85rem;
+}
+
+.premium-day-card {
+    flex: 1;
+    background: rgba(255, 255, 255, .05);
+    border-left: 5px solid #fbbf24;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.premium-day-card h3 {
+    color: #fbbf24;
+    margin-bottom: 10px;
+    font-size:1.1rem;
+}
+
+.premium-day-card p {
+    color: #e2e8f0;
+    line-height: 1.8;
+    margin: 0;
+    font-size:.95rem;
+    line-height:1.6;
+}
+
+/* =======================================
+   Mobile
+======================================= */
+@media(max-width:768px) {
+    .premium-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-day-row {
+        flex-direction: column;
+    }
+
+    .premium-day-circle {
+        margin-bottom: 18px;
+    }
+}
+
+.route-box{
+    background:rgba(255,255,255,.05);
+    border-left:4px solid #fbbf24;
+    border-radius:14px;
+    padding:18px 22px;
+    color:#e2e8f0;
+    font-size:1rem;
+    line-height:1.8;
+}
+
+.route-box{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:rgba(255,255,255,.05);
+    border-left:4px solid #fbbf24;
+    border-radius:14px;
+    padding:18px 22px;
+    color:#e2e8f0;
+    font-size:1rem;
+    line-height:1.7;
+}
+
+.route-icon{
+    width:36px;
+    height:36px;
+    flex-shrink:0;
+}
