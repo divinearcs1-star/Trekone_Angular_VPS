@@ -31,7 +31,8 @@ export class SearchTreksComponent implements OnInit {
       } else {
         const search = this.searchText.toLowerCase();
         this.filteredEvents = this.events.filter((event: any) =>
-          event.eventName?.toLowerCase().includes(search)
+          event.eventName?.toLowerCase().includes(search) || event.category?.toLowerCase().includes(search) ||
+          event.season?.some((season: string) => season.toLowerCase().includes(search)) || event.trekType?.toLowerCase().includes(search)
         );
         this.loading = false;
       }
@@ -40,7 +41,7 @@ export class SearchTreksComponent implements OnInit {
       this.loading = false;
     });
   }
-  
+
   applySearch(): void {
     const search =
       this.searchText.trim().toLowerCase();
@@ -51,13 +52,9 @@ export class SearchTreksComponent implements OnInit {
     }
     this.filteredEvents = this.originalEvents.filter(
       (event: any) =>
-        event.eventName
-          ?.toLowerCase()
-          .includes(search)
-        ||
-        event.difficulty
-          ?.toLowerCase()
-          .includes(search)
+        event.eventName?.toLowerCase().includes(search) || event.difficulty?.toLowerCase().includes(search) ||
+        event.category?.toLowerCase().includes(search) || event.season?.some((season: string) => season.toLowerCase().includes(search)) ||
+        event.trekType?.toLowerCase().includes(search)
     );
   }
 }

@@ -76,7 +76,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     }
     this.filteredEvents = this.events.filter((event: any) =>
-      event.eventName?.toLowerCase().includes(search));
+      event.eventName?.toLowerCase().includes(search) || event.category?.toLowerCase().includes(search) ||
+      event.season?.some((season: string) => season.toLowerCase().includes(search)) ||
+      event.trekType?.toLowerCase().includes(search));
   }
   // to clear search box
   clearSearch(): void {
@@ -98,6 +100,42 @@ export class HomeComponent implements OnInit, OnDestroy {
         break;
       case "Night":
         this.searchText = 'Night';
+        break;
+      case "Waterfall":
+        this.searchText = 'Waterfall';
+        break;
+      case "Jungle":
+        this.searchText = 'Jungle';
+        break;
+      case "Himalayan":
+        this.searchText = 'Himalayan';
+        break;
+      case "Coastal":
+        this.searchText = 'Coastal';
+        break;
+      case "Backpacking":
+        this.searchText = 'Backpacking';
+        break;
+      case "Summit":
+        this.searchText = 'Summit';
+        break;
+      case "Nature":
+        this.searchText = 'Nature';
+        break;
+      case "Adventure":
+        this.searchText = 'Adventure';
+        break;
+      case "Summer":
+        this.searchText = 'Summer';
+        break;
+      case "Winter":
+        this.searchText = 'Winter';
+        break;
+      case "Sunrise":
+        this.searchText = 'Sunrise';
+        break;
+      case "Plateau":
+        this.searchText = 'Plateau';
         break;
       case "Family":
         this.searchText = 'Family';

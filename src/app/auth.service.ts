@@ -8,12 +8,12 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
 
-  loginUrl = `${environment.apiUrl}` + '/api/login'
-  registerUrl = `${environment.apiUrl}` + '/api/register'
+  loginUrl = `${environment.apiUrl}` + '/auth/login'
+  registerUrl = `${environment.apiUrl}` + '/auth/register'
   forgotPasswordUrl = `${environment.apiUrl}` + '/auth/forgot-password'
   resetPasswordUrl = `${environment.apiUrl}` + '/auth/reset-password'
-  refreshTokenUrl = `${environment.apiUrl}` + '/api/refresh-token'
-  logoutUrl = `${environment.apiUrl}` + '/api/logout'
+  refreshTokenUrl = `${environment.apiUrl}` + '/auth/refresh-token'
+  logoutUrl = `${environment.apiUrl}` + '/auth/logout'
 
   constructor(private http: HttpClient, private router: Router) {
   }

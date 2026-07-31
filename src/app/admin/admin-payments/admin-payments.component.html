@@ -1,19 +1,20 @@
 <div class="payments-page">
 
     <div class="page-header">
-    <button class="back-btn" routerLink="/admin/dashboard" title="Go to Dashboard">
-        ←
-    </button>
-    <h1 class="page-title">Payment Management</h1>
+        <button class="back-btn" routerLink="/admin/dashboard" title="Go to Dashboard">
+            ←
+        </button>
+        <h1 class="page-title">Payment Management</h1>
     </div>
     <table>
 
         <thead>
             <tr>
+                <th>Customer Name</th>
                 <th>Booking ID</th>
                 <th>Order ID</th>
                 <th>Payment ID</th>
-                <th>Email</th>
+                <!-- <th>Email</th> -->
                 <th>Amount</th>
                 <th>Status</th>
                 <th>Refund</th>
@@ -24,11 +25,12 @@
         <tbody>
 
             <tr *ngFor="let payment of payments">
-
+                {{ payment.customerName }}<br>
+                <small>{{ payment.email }}</small>
                 <td>{{ payment.bookingId }}</td>
-                <td>{{ payment.orderid }}</td>
+                <td>{{ payment.orderId }}</td>
                 <td>{{ payment.paymentId }}</td>
-                <td>{{ payment.email }}</td>
+                <!-- <td>{{ payment.email }}</td> -->
                 <td>₹{{ payment.amount }}</td>
                 <td>{{ payment.paymentStatus }}</td>
                 <td>{{ payment.refundStatus || 'N/A' }}</td>
