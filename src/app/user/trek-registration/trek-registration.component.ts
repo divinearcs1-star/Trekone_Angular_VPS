@@ -100,7 +100,7 @@ export class TrekRegistrationComponent  implements OnInit {
   increasePerson() {
     const control = this.MForm.get('noofperson');
     let value = Number(control?.value);
-    if (value < 10) {
+    if (value < 20) {
       control?.setValue(String(value + 1));
       this.updateAmount();
     }
