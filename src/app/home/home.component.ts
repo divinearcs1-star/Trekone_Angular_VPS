@@ -291,7 +291,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 100);
   }
   startAutoScroll() {
-    this.intervalId = setInterval(() => { this.next(); }, 2500);
+    this.intervalId1 = setInterval(() => { this.next(); }, 2500);
   }
   next() {
     // loop safely
