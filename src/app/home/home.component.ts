@@ -156,29 +156,80 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     );
   }
-  startCountdown() {
-    let minIndex = 0;
-    for (let i = 1; i < this.allevents.length; i++) {
-      const currentDate = new Date(this.allevents[i].batches[0].eventDate);
-      const minDate = new Date(this.allevents[minIndex].batches[0].eventDate);
-      if (currentDate < minDate) {
-        minIndex = i;
+  
+    // let minIndex = 0;
+    // for (let i = 1; i < this.allevents.length; i++) {
+    //   const currentDate = new Date(this.allevents[i].batches[0].eventDate);
+    //   const minDate = new Date(this.allevents[minIndex].batches[0].eventDate);
+    //   if (currentDate < minDate) {
+    //     minIndex = i;
+    //   }
+    // }
+    // console.log(minIndex);
+
+    // if (this.allevents.length) {
+    //   const trekDate = new Date(this.allevents[minIndex].batches[0].eventDate);
+
+    //   this.intervalId = setInterval(() => {
+    //     const now = new Date().getTime();
+    //     const distance = trekDate.getTime() - now;
+    //     this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    //     this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    //     this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    //   }, 1000);
+    // }
+    startCountdown() {
+      // Clear previous interval
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
       }
-    }
-    console.log(minIndex);
-
-    if (this.allevents.length) {
-      const trekDate = new Date(this.allevents[minIndex].batches[0].eventDate);
-
+      // Tomorrow (ignore today's treks)
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      let nextBatch: any = null;
+      // Find nearest upcoming batch after today
+      this.allevents.forEach((event: any) => {
+        event.batches.forEach((batch: any) => {
+          const batchDate = new Date(batch.eventDate);
+          batchDate.setHours(0, 0, 0, 0);
+          if (batchDate >= tomorrow) {
+            if (
+              !nextBatch ||
+              batchDate.getTime() < new Date(nextBatch.eventDate).getTime()
+            ) {
+              nextBatch = batch;
+            }
+          }
+        });
+      });
+      // No upcoming trek found
+      if (!nextBatch) {
+        this.days = 0;
+        this.hours = 0;
+        this.minutes = 0;
+        return;
+      }
+      const trekDate = new Date(nextBatch.eventDate);
       this.intervalId = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = trekDate.getTime() - now;
+        const distance = trekDate.getTime() - Date.now();
+        if (distance <= 0) {
+          clearInterval(this.intervalId);
+          this.startCountdown(); // Find the next trek automatically
+          return;
+        }
         this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        this.hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) /
+          (1000 * 60 * 60)
+        );
+        this.minutes = Math.floor(
+          (distance % (1000 * 60 * 60)) /
+          (1000 * 60)
+        );
       }, 1000);
     }
-  }
+
   /* ==========================
       REVIEWS
   ========================== */
