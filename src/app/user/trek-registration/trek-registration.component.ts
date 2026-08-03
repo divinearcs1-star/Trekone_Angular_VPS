@@ -82,7 +82,7 @@ export class TrekRegistrationComponent  implements OnInit {
       customerName: this.MForm.get('fname')?.value,
       mobile: this.MForm.get('phone')?.value,
       email: this.MForm.get('email')?.value,
-      noOfPersons: this.MForm.get('noofperson')?.value,
+      noOfPersons: Number(this.MForm.get('noofperson')?.value),
       amount: this.MForm.get('amount')?.value,
       eventDate: this.eventdate,
       batchCode: this.batchid,

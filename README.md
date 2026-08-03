@@ -1,27 +1,102 @@
-# Clients
+# TrekOne Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+A modern and responsive Adventure Trek Booking Platform built with **Angular 17**. The application provides a seamless trekking experience with secure authentication, online booking, Razorpay payment integration, refund & cancellation workflow, and role-based access for Admin and Customers.
 
-## Development server
+---
+![TrekOne Home Page](image.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- User Registration & Login
+- JWT Authentication
+- Forgot & Reset Password
+- Role-Based Authentication (Admin & Customer)
+- Trek Listing & Trek Details
+- Advanced Trek Search & Filtering
+- Online Booking Flow
+- Razorpay Payment Integration
+- Booking Cancellation & Refund
+- My Bookings
+- Reviews & Ratings
+- Batch Selection
+- Responsive UI
+- Angular Lazy Loading
+- Route Guards & HTTP Interceptors
+- Toast Notifications
+- REST API Integration with Express.js Backend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Tech Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 17.2.3
+- Angular Material
+- Bootstrap 5
+- ngx-toastr
+- TypeScript
+- RxJS
+- JWT Authentication
+- Razorpay
+- REST API Integration (Express.js Backend)
+- MongoDB Atlas
+- Git
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Architecture
 
-## Running end-to-end tests
+```
+Components
+     │
+Services
+     │
+HTTP Client
+     │
+Express.js REST API
+     │
+MongoDB Atlas
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Deployment
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Firebase Hosting
+- AWS S3 Static Website Hosting
+- Docker Containerization
+- Hostinger VPS Deployment using Docker & Nginx
+- GitHub Actions CI/CD Pipeline
+
+---
+
+## Run Locally
+```bash
+git clone https://github.com/divinearcs1-star/trekone-frontend.git
+
+cd trekone-frontend
+
+npm install
+
+ng serve --open
+```
+
+Application runs at:
+```
+http://localhost:4200
+```
+
+---
+
+## Highlights
+- Built using Angular 17 with Modular Architecture
+- Responsive UI using Bootstrap
+- JWT Authentication with Route Guards
+- Lazy Loaded Feature Modules
+- REST API Integration with Express.js Backend
+- Secure Online Payments using Razorpay
+- Automated Docker Deployment using GitHub Actions
+- Production Deployment on Firebase, AWS S3 & Hostinger VPS
+---
+
+## Author
+Pankaj Belote
