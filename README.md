@@ -30,7 +30,6 @@ A modern and responsive Adventure Trek Booking Platform built with **Angular 17*
 ## Tech Stack
 
 - Angular 17.2.3
-- Angular Material
 - Bootstrap 5
 - ngx-toastr
 - TypeScript
