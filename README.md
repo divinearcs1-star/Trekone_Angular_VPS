@@ -24,7 +24,6 @@ A modern and responsive Adventure Trek Booking Platform built with **Angular 17*
 - Route Guards & HTTP Interceptors
 - Toast Notifications
 - REST API Integration with Express.js Backend
-
 ---
 
 ## Tech Stack
