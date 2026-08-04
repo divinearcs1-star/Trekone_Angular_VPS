@@ -38,7 +38,6 @@ A modern and responsive Adventure Trek Booking Platform built with **Angular 17*
 - REST API Integration (Express.js Backend)
 - MongoDB Atlas
 - Git
-
 ---
 
 ## Architecture
